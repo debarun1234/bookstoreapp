@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login as Seller - Online Bookstore</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')Let's complete the stubs for the seller and customer login and registration pages, ensuring they follow the same design standards as the other pages. We'll create `login_seller.html`, `login_customer.html`, `register_seller.html`, and `register_customer.html`.
+
+### templates/login_seller.html
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login as Seller - Online Bookstore</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <main class="container">
+        <section>
+            <h2>Login as Seller</h2>
+            <form>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Login</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
