@@ -3,36 +3,31 @@
 ## Road map
 ```text
 online_bookstore/
-|
 ├── app/
 │   ├── __init__.py
-│   ├── routes.py
 │   ├── models.py
-│   ├── forms.py
+│   ├── routes.py
 │   ├── templates/
-│   │   ├── home.html
+│   │   ├── index.html
+│   │   ├── about.html
 │   │   ├── login.html
 │   │   ├── register.html
-│   │   ├── account.html
-│   │   ├── browse.html
-│   │   ├── order.html
-│   │   ├── admin.html
-│   │   ├── add_book.html
-│   │   ├── update_book.html
-│   │   ├── manage_users.html
-│   │   ├── about.html
-│   └── static/
-│       ├── css/
-│       │   └── style.css
-        |   └── scripts.js
-   
-|
+│   │   ├── account_user.html
+│   │   ├── account_admin.html
+│   │   ├── cart.html
+│   │   ├── catalog.html
+│   │   ├── manage_books.html
+│   │   ├── order_history.html
+│   │   ├── wishlist.html
+│   │   ├── account_settings.html
+│   ├── static/
+│   │   ├── styles.css
+│   │   ├── scripts.js
 ├── migrations/
 |
 ├── config.py
-|
-├── run.py
-|
-└── requirements.txt
+├── requirements.txt
+└── run.py
+
 ```
 
