@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Orders</title>
+    <link rel="stylesheet" href="app\static\css\styles.css">
+</head>
+<body>
+    <header>
+        <h1>Manage Orders</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="account_admin.html">Admin Account</a></li>
+                <li><a href="logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="manage-orders">
+            <h2>Order List</h2>
+            <div class="order-list">
+                {% for order in orders %}
+                <div class="order-item">
+                    <p>Order ID: {{ order.id }}</p>
+                    <p>Book: {{ order.book.title }}</p>
+                    <p>Quantity: {{ order.quantity }}</p>
+                    <p>Status: {{ order.status }}</p>
+                    <p>Ordered by: {{ order.user.username }}</p>
+                    <p>Shipping Address: {{ order.user.address }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Online Bookstore</p>
+    </footer>
+    <script src="app\static\css\scripts.js"></script>
+</body>
+</html>

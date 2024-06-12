@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Settings</title>
+    <link rel="stylesheet" href="app\static\css\styles.css">
+</head>
+<body>
+    <header>
+        <h1>Account Settings</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/account_user">My Account</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="account-settings">
+            <h2>Update Your Information</h2>
+            <form id="account-settings-form" method="POST" action="/update_account">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" value="{{ user.username }}" required>
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" value="{{ user.address }}" required>
+                <button type="submit">Update</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Online Bookstore</p>
+    </footer>
+    <script src="app\static\css\scripts.js"></script>
+</body>
+</html>

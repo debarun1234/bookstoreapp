@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="app\static\css\styles.css">
+</head>
+<body>
+    <header>
+        <h1>Cart</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/account">My Account</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="cart">
+            <h2>Cart Items</h2>
+            <div class="cart-items">
+                {% for item in cart_items %}
+                <div class="cart-item">
+                    <h3>{{ item.book.title }}</h3>
+                    <p>Author: {{ item.book.author }}</p>
+                    <p>Price: ${{ item.book.price }}</p>
+                    <p>Quantity: {{ item.quantity }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            <h2>Total Price: ${{ total_price }}</h2>
+            <form method="POST" action="/checkout">
+                <button type="submit">Checkout</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Online Bookstore</p>
+    </footer>
+    <script src="app\static\css\scripts.js"></script>
+</body>
+</html>

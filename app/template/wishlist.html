@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist</title>
+    <link rel="stylesheet" href="app\static\css\styles.css">
+</head>
+<body>
+    <header>
+        <h1>Wishlist</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/account_user">My Account</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="wishlist">
+            <h2>My Wishlist</h2>
+            <div class="wishlist-list">
+                {% for item in wishlist_items %}
+                <div class="wishlist-item">
+                    <p>Book: {{ item.book.title }}</p>
+                    <form method="POST" action="/remove_from_wishlist/{{ item.id }}" class="remove-from-wishlist-form" data-item-id="{{ item.id }}">
+                        <button type="submit">Remove</button>
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Online Bookstore</p>
+    </footer>
+    <script src="app\static\css\scripts.js"></script>
+</body>
+</html>

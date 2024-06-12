@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Account</title>
+    <link rel="stylesheet" href="app\static\css\styles.css">
+</head>
+<body>
+    <header>
+        <h1>Online Bookstore</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="login.html">Sign In</a></li>
+                <li><a href="account_admin.html">Admin Account</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="account">
+            <h2>Admin Account</h2>
+            <p>Welcome, {{ current_user.username }}</p>
+            <ul>
+                <li><a href="manage_books.html">Manage Books</a></li>
+                <li><a href="manage_orders.html">Manage Orders</a></li>
+                <li><a href="manage_users.html">User Accounts</a></li>
+                <li><a href="logout">Logout</a></li>
+            </ul>
+        </section>
+        <section class="admin-functions">
+            <h2>Manage Books</h2>
+            <form id="add-book-form" method="POST" action="/add_book">
+                <label for="title">Book Title:</label>
+                <input type="text" id="title" name="title" required>
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author" required>
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" required>
+                <button type="submit">Add Book</button>
+            </form>
+            <h2>Order List</h2>
+            <div class="order-list">
+                {% for order in orders %}
+                <div class="order-item">
+                    <p>Book: {{ order.book.title }}</p>
+                    <p>Quantity: {{ order.quantity }}</p>
+                    <p>Status: {{ order.status }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Online Bookstore</p>
+    </footer>
+    <script src="app\static\css\scripts.js"></script>
+</body>
+</html>

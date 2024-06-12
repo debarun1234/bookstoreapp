@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Books</title>
+    <link rel="stylesheet" href="app\static\css\styles.css">
+</head>
+<body>
+    <header>
+        <h1>Manage Books</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/account_admin">Admin Account</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="manage-books">
+            <h2>Add New Book</h2>
+            <form id="add-book-form" method="POST" action="/manage_books">
+                <label for="title">Book Title:</label>
+                <input type="text" id="title" name="title" required>
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author" required>
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" required>
+                <label for="genre">Genre:</label>
+                <select id="genre" name="genre" required>
+                    {% for genre in genres %}
+                    <option value="{{ genre.id }}">{{ genre.name }}</option>
+                    {% endfor %}
+                </select>
+                <label for="image_url">Image URL:</label>
+                <input type="text" id="image_url" name="image_url">
+                <button type="submit">Add Book</button>
+            </form>
+            <h2>Existing Books</h2>
+            <div class="book-list">
+                {% for book in books %}
+                <div class="book-item">
+                    <img src="{{ book.image_url }}" alt="{{ book.title }}">
+                    <h3>{{ book.title }}</h3>
+                    <p>Author: {{ book.author }}</p>
+                    <p>Price: ${{ book.price }}</p>
+                    <p>Genre: {{ book.genre.name }}</p>
+                    <form method="POST" action="/delete_book/{{ book.id }}">
+                        <button type="submit">Delete</button>
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Online Bookstore</p>
+    </footer>
+    <script src="app\static\css\scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalog</title>
+    <link rel="stylesheet" href="app\static\css\styles.css">
+</head>
+<body>
+    <header>
+        <h1>Catalog</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="login.html">Sign In</a></li>
+                <li><a href="account_user.html">My Account</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <aside>
+            <h2>Genres</h2>
+            <ul>
+                {% for genre in genres %}
+                <li><a href="#">{{ genre.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </aside>
+        <section class="catalog">
+            <h2>Books</h2>
+            <div class="book-list">
+                {% for book in books %}
+                <div class="book-item">
+                    <img src="{{ book.image_url }}" alt="{{ book.title }}">
+                    <h3>{{ book.title }}</h3>
+                    <p>Author: {{ book.author }}</p>
+                    <p>Price: ${{ book.price }}</p>
+                    <form method="POST" action="/add_to_cart/{{ book.id }}">
+                        <input type="number" name="quantity" value="1" min="1">
+                        <button type="submit">Add to Cart</button>
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Online Bookstore</p>
+    </footer>
+    <script src="app\static\css\scripts.js"></script>
+</body>
+</html>
