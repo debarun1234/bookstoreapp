@@ -8,26 +8,33 @@ online_bookstore/
 │   ├── models.py
 │   ├── routes.py
 │   ├── templates/
-│   │   ├── index.html
-│   │   ├── about.html
-│   │   ├── login.html
-│   │   ├── register.html
-│   │   ├── account_user.html
-│   │   ├── account_admin.html
-│   │   ├── cart.html
-│   │   ├── catalog.html
-│   │   ├── manage_books.html
-│   │   ├── order_history.html
-│   │   ├── wishlist.html
-│   │   ├── account_settings.html
+│   │   ├── user/
+│   │   │   ├── index.html
+│   │   │   ├── about.html
+│   │   │   ├── login.html
+│   │   │   ├── register.html
+│   │   │   ├── account_user.html
+│   │   │   ├── cart.html
+│   │   │   ├── catalog.html
+│   │   │   ├── order_history.html
+│   │   │   ├── wishlist.html
+│   │   │   ├── account_settings.html
+│   │   ├── admin/
+│   │   │   ├── account_admin.html
+│   │   │   ├── manage_books.html
+│   │   │   ├── manage_orders.html
 │   ├── static/
-│   │   ├── styles.css
-│   │   ├── scripts.js
+│   │   ├── css/
+│   │   │   ├── styles.css
+│   │   ├── js/
+│   │   │   ├── main.js
+│   │   │   ├── forms.js
+│   │   │   ├── ui.js
 ├── migrations/
-|
 ├── config.py
 ├── requirements.txt
 └── run.py
+
 
 ```
 
