@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Book Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            grid-template-columns: 200px 1fr;
+            height: 100vh;
+            animation: fadeIn 2s ease-in;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        header {
+            grid-column: span 2;
+            background-image: url('https://bookmarin.com/wp-content/uploads/2016/12/books-stack.png'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            color: #11eeb7;
+            padding: 20px 0;
+            text-align: center;
+            font-family: 'Forte', serif;
+            font-size: 20px;
+            animation: slideDown 1s ease-out;
+            position: relative;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(247, 168, 168, 0.5); /* Overlay color */
+            z-index: 0;
+        }
+        header h1 {
+            position: relative;
+            z-index: 1;
+        }
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        nav {
+            background-color: transparent;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            animation: fadeInNav 2s ease-in;
+        }
+        @keyframes fadeInNav {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        nav a {
+            display: block;
+            color: #444;
+            margin: 10px 0;
+            text-decoration: none;
+            padding: 20px;
+            font-size: 18px;
+            transition: color 0.3s ease;
+            opacity: 0;
+            animation: linkFadeIn 0.5s forwards;
+            cursor: pointer; /* Change cursor to pointer */
+        }
+        nav a:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+        nav a:nth-child(2) {
+            animation-delay: 1s;
+        }
+        nav a:nth-child(3) {
+            animation-delay: 1.5s;
+        }
+        nav a:nth-child(4) {
+            animation-delay: 2s;
+        }
+        @keyframes linkFadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        nav a:hover {
+            color: #ffcc00;
+        }
+        .container {
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+        .books-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .book {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: calc(15% - 20px);
+            box-sizing: border-box;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .book:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        .book img {
+            width: 100%;
+            height: 150px;
+            display: list-item;
+        }
+        .book-details {
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+        }
+        .book-details h2 {
+            margin: 0 0 10px;
+            font-size: 16px;
+        }
+        .book-details p {
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        .price {
+            color: green;
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        .add-to-cart {
+            display: inline-block;
+            background-color: #28a745;
+            color: #fff;
+            padding: 5px 10px;
+            text-decoration: none;
+            font-size: 14px;
+            border-radius: 2px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .add-to-cart:hover {
+            background-color: #218838;
+            transform: scale(1.1);
+        }
+        footer {
+            grid-column: span 2;
+            background-color: #333;
+            color: #d17a7a;
+            text-align: center;
+            padding: 2px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Online Bookiee</h1>
+    </header>
+    <nav>
+        <a onclick="filterBooks('novel')">Novels</a>
+        <a onclick="filterBooks('fiction')">Fiction</a>
+        <a onclick="filterBooks('comic')">Comics</a>
+        <a onclick="filterBooks('travel')">Travel</a>
+    </nav>
+    <div class="container">
+        <div class="books-container">
+            <div class="book" data-genre="fiction">
+                <img src="c:\Users\Bindhu\Desktop\image.jfif" alt="Book Image">
+                <div class="book-details">
+                    <h2>Paris novel</h2>
+                    <p>Author: Ruth Reichl</p>
+                    <p>Genre: Fiction</p>
+                    <p class="price">$19.99</p>
+                    <a href="add_cart_link.html" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+            <div class="book" data-genre="novel">
+                <img src="c:\Users\Bindhu\Desktop\pic.jpg" alt="Book Image">
+                <div class="book-details">
+                    <h2>Eyes Were Watching God</h2>
+                    <p>Author: Zora Hurston</p>
+                    <p>Genre: Novel</p>
+                    <p class="price">$14.99</p>
+                    <a href="add_cart_link.html" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+            <div class="book" data-genre="comic">
+                <img src="c:\Users\Bindhu\Desktop\john.jfif" alt="Book Image">
+                <div class="book-details">
+                    <h2>I am John Lewis</h2>
+                    <p>Author: Christopher Eliopoulos</p>
+                    <p>Genre: Comic</p>
+                    <p class="price">$20.99</p>
+                    <a href="add_cart_link.html" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+            <div class="book" data-genre="comic">
+                <img src="c:\Users\Bindhu\Desktop\dennis.jpg" alt="Book Image">
+                <div class="book-details">
+                    <h2>Dennis the Menace</h2>
+                    <p>Author: Mank Ketcham</p>
+                    <p>Genre: Comic</p>
+                    <p class="price">$17.99</p>
+                    <a href="add_cart_link.html" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+            <div class="book" data-genre="travel">
+                <img src="c:\Users\Bindhu\Desktop\traveller.jpg" alt="Book Image">
+                <div class="book-details">
+                    <h2>A book of Traveller's Tales</h2>
+                    <p>Author: Eric Newby</p>
+                    <p>Genre: Travel</p>
+                    <p class="price">$15.99</p>
+                    <a href="add_cart_link.html" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+            <div class="book" data-genre="travel">
+                <img src="c:\Users\Bindhu\Desktop\ride.jpg" alt="Book Image">
+                <div class="book-details">
+                    <h2>The Ride of her Life</h2>
+                    <p>Author: Elizabett Letts</p>
+                    <p>Genre: Travel</p>
+                    <p class="price">$14.99</p>
+                    <a href="add_cart_link.html" class="add-to-cart">Add to Cart</a>
+                </div>
+            </div>
+            <!-- Add more book items here -->
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Online Book Store. All Rights Reserved.</p>
+    </footer>
+    <script>
+        function filterBooks(genre) {
+            const books = document.querySelectorAll('.book');
+            books.forEach(book => {
+                if (book.getAttribute('data-genre').toLowerCase() === genre) {
+                    book.style.display = 'block';
+                } else {
+                    book.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
